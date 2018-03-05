@@ -1,0 +1,3 @@
+{{ range where .Paginator.Pages "Section" "ne" "" }}
+<p><a href='{{ .URL }}'>{{ .LinkTitle }}</a></p>
+{{ end }}

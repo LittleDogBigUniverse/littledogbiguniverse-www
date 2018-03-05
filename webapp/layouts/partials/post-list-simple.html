@@ -1,0 +1,3 @@
+{{ range where .Paginator.Pages "Section" "ne" "" }}
+<p>{{ if isset .Params "active" }}<strike>{{ end }}<a href='{{ .Param "website" }}'>{{ .LinkTitle }}</a>{{ if isset .Params "active" }}</strike>{{ end }}</p>
+{{ end }}

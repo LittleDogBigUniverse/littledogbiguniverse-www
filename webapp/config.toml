@@ -1,0 +1,9 @@
+baseurl = "http://www.littledogbiguniverse.com/"
+languageCode = "en-us"
+title = "Little Dog Big Universe"
+googleAnalytics = "UA-38942776-19"
+paginate = 1000
+
+[params]
+    description = "Little Dog Big Universe"
+    keywords = "Kotlin, DevOps, Qt, Programming, SysAdmin, Java, Javascript, Games, Tech Notes"

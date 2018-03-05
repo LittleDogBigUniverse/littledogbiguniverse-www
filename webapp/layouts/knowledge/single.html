@@ -1,0 +1,22 @@
+{{ partial "header.html" . }}
+<article class="post">
+    <header>
+        <h1>{{ .Title }}</h1>
+        <p class="headline">
+        {{ .Date.Format "January 2, 2006" }}
+        </p>
+        <p>
+        {{ with .Params.tags }}
+        {{ if ge (len .) 1 }}
+            {{ range . }}
+                {{ . }}
+            {{ end }}
+        {{ end }}
+        {{ end}}
+        </p>
+    </header>
+    <section id="post-body">
+        {{ .Content }}
+    </section>
+</article>
+{{ partial "footer.html" . }}

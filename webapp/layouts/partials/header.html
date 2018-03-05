@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+    <title>{{ .Title }}</title>
+    <meta name="title" content="{{ .Title }}"/>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="description" content="{{ .Site.Params.description }}"/>
+    <meta name="keywords" content="{{ .Site.Params.keywords }}"/>
+    <link rel="shortcut icon" type="image/x-icon"
+          href="data:image/png;base64,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">
+    {{ partial "css.html" . }}
+</head>
+<body>
+<nav id="menu">
+    <a href="/">Home</a> -
+    <a href="/knowledge">Stuff I forget</a> -
+    <a href="/coolstuff">Cool Stuff</a> -
+    <a href="/projects">Projects</a> -
+    <a href="/dogs">My dogs</a>
+</nav>
+<main>

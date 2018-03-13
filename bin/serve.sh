@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 cd ../webapp
-hugo server
+hugo server --disableFastRender
 cd ../bin

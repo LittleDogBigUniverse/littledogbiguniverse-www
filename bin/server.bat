@@ -1,3 +1,3 @@
 cd ..\webapp
-hugo server
+hugo server --disableFastRender
 cd ..\bin

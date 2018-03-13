@@ -1,0 +1,67 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+
+        $.fn.serializeObject = function() {
+            var o = {};
+            var a = this.serializeArray();
+            $.each(a, function() {
+                if (o[this.name]) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+            return o;
+        };
+
+        $('#contactForm').submit(function (e) {
+
+            if ($('#captcha').val() !== "5") {
+                alert("Please add the numbers again...");
+                e.preventDefault();
+                return;
+            }
+
+            if ($('#email').val() == "") {
+                alert("Please enter your info...");
+                e.preventDefault();
+                return;
+            }
+            var d = JSON.stringify($('#contactForm').serializeObject());
+
+            $('.button').prop('disabled', true);
+
+            $('#contactFormMessage').css('display', "block");
+            $('#contactFormMessage').html("Sending...");
+
+            // var url = 'http://localhost:5000/mailer/send/littledogbiguniverse.com';
+            var url = 'https://a0kxbeqn96.execute-api.us-east-1.amazonaws.com/dev/mailer/send/littledogbiguniverse.com';
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "POST",
+                url: url,
+                data: d,
+                complete: function (data) {
+                    window.setTimeout(function () {
+                        $('.button').prop('disabled', false);
+                    }, 500);
+                    if (data.responseText !== "ok") {
+                        $('#contactFormMessage').css('display', "block");
+                        $('#contactFormMessage').html("An error occurred.  Please contact me via normal email." +
+                            "")
+                    } else {
+                        $('#contactFormMessage').css('display', "block");
+                        $('#contactFormMessage').html("Thank you for contacting me.  I'll respond soon.")
+                        $('#contactForm').css('display', "none");
+                    }
+                }
+            });
+            e.preventDefault();
+        });
+    });
+</script>
